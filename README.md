@@ -19,5 +19,5 @@ W3-PS1/some-puzzle
 ### PR name
 
 ```
-Week 3/10 | Problem set 1/3 | Some Puzzle
+Week 3 | Problem set 1 | Some Puzzle
 ```
