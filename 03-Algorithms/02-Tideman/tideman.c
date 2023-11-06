@@ -3,13 +3,13 @@
 #include <string.h>
 
 // Max number of candidates
-#define MAX 9
+#define MAX_NUMBER_CANDIDATES 9
 
 // preferences[i][j] is number of voters who prefer i over j
-int preferences[MAX][MAX];
+int preferences[MAX_NUMBER_CANDIDATES][MAX_NUMBER_CANDIDATES];
 
 // locked[i][j] means i is locked in over j
-bool locked[MAX][MAX];
+bool locked[MAX_NUMBER_CANDIDATES][MAX_NUMBER_CANDIDATES];
 
 // Each pair has a winner, loser
 typedef struct
@@ -20,8 +20,8 @@ typedef struct
 pair;
 
 // Array of candidates
-string candidates[MAX];
-pair pairs[MAX * (MAX - 1) / 2]; // 36
+string candidates[MAX_NUMBER_CANDIDATES];
+pair pairs[MAX_NUMBER_CANDIDATES * (MAX_NUMBER_CANDIDATES - 1) / 2]; // 36
 
 int pair_count;
 int candidate_count;
@@ -46,9 +46,9 @@ int main(int argc, string argv[])
 
     // Populate array of candidates
     candidate_count = argc - 1;
-    if (candidate_count > MAX)
+    if (candidate_count > MAX_NUMBER_CANDIDATES)
     {
-        printf("Maximum number of candidates is %i\n", MAX);
+        printf("Maximum number of candidates is %i\n", MAX_NUMBER_CANDIDATES);
         return 2;
     }
     for (int i = 0; i < candidate_count; i++)
