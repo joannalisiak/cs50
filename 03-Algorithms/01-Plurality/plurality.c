@@ -3,7 +3,7 @@
 #include <string.h>
 
 // Max number of candidates
-#define MAX 9
+#define MAX_NUMBER_CANDIDATES 9
 
 // Candidates have name and vote count
 typedef struct
@@ -14,14 +14,14 @@ typedef struct
 candidate;
 
 // Array of candidates
-candidate candidates[MAX];
+candidate candidates[MAX_NUMBER_CANDIDATES];
 
 // Number of candidates
 int candidate_count;
 
 // Function prototypes
 bool vote(string name);
-void print_winner(void);
+void determine_winner(void);
 
 int main(int argc, string argv[])
 {
@@ -34,9 +34,9 @@ int main(int argc, string argv[])
 
     // Populate array of candidates
     candidate_count = argc - 1;
-    if (candidate_count > MAX)
+    if (candidate_count > MAX_NUMBER_CANDIDATES)
     {
-        printf("Maximum number of candidates is %i\n", MAX);
+        printf("Maximum number of candidates is %i\n", MAX_NUMBER_CANDIDATES);
         return 2;
     }
     for (int i = 0; i < candidate_count; i++)
@@ -60,7 +60,8 @@ int main(int argc, string argv[])
     }
 
     // Display winner of election
-    print_winner();
+    string winner_name = determine_winner();
+    printf("%s\n", winner_name);
 }
 
 // Update vote totals given a new vote
@@ -78,8 +79,10 @@ bool vote(string name)
 }
 
 // Print the winner (or winners) of the election
-void print_winner(void)
+string determine_winner(void)
 {
+    string winner_name;
+
     int winner_votes = candidates[0].votes;
     for (int i = 1; i < candidate_count; i++)
     {
@@ -93,8 +96,8 @@ void print_winner(void)
     {
         if (candidates[i].votes == winner_votes)
         {
-            printf("%s\n", candidates[i].name);
+            winner_name = candidates[i].name
         }
     }
-    return;
+    return winner_name;
 }
