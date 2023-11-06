@@ -33,7 +33,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 bool cycle(int end, int start);
-void print_winner(void);
+string determine_winner(void);
 
 int main(int argc, string argv[])
 {
@@ -94,7 +94,8 @@ int main(int argc, string argv[])
     add_pairs();
     sort_pairs();
     lock_pairs();
-    print_winner();
+    string winner = determine_winner();
+    printf("%s\n", winner);
     return 0;
 }
 
@@ -201,8 +202,9 @@ bool cycle(int end, int start)
 }
 
 // Print the winner of the election
-void print_winner(void)
+string determine_winner(void)
 {
+    string winner;
     for (int i = 0; i < candidate_count; i++)
     {
         int false_count = 0;
@@ -213,10 +215,10 @@ void print_winner(void)
                 false_count++;
                 if (false_count == candidate_count)
                 {
-                    printf("%s\n", candidates[i]);
+                    winner = candidates[i];
                 }
             }
         }
     }
-    return;
+    return winner;
 }
